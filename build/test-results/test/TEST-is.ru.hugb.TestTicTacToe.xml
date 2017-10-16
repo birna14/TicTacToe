@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="is.ru.hugb.TestTicTacToe" tests="1" skipped="0" failures="0" errors="0" timestamp="2017-10-10T13:57:29" hostname="Svanhvits-MacBook-Pro.local" time="0.001">
-  <properties/>
-  <testcase name="testHelloWorld" classname="is.ru.hugb.TestTicTacToe" time="0.001"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

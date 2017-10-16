@@ -1,11 +1,13 @@
 package is.ru.hugb;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 public class TestBoard {
+        
         @Test
-        public void testHelloWorld() {
-                assertEquals("Hello World", TicTacToe.hello());
+        public void testCheckLegalMove(){
+        	assertEquals(true, Board.checkLegalMove());
         }
 }
