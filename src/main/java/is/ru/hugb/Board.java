@@ -10,14 +10,18 @@ public class Board {
         }
 
         //TODO
-        Boolean checkLegalMove() {
+       public static Boolean checkLegalMove() {
                 return true;
         }
 
         //TODO
-        Boolean checkWin();
+       public Boolean checkWin(){
+                return true;
+       }
 
         //TODO
-        Boolean isFull();
+        public Boolean isFull(){
+                return true;
+        }
 }
 
