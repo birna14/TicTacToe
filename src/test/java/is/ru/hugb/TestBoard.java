@@ -25,4 +25,10 @@ public class TestBoard {
         public void testIsFull(){
           assertEquals(false, b.isFull());
         }
+
+        @Test
+        public void testWin(){
+         
+          //assertEquals(false, b.checkWin(b.board));
+        }
 }
