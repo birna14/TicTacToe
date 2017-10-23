@@ -6,8 +6,6 @@ public class Board {
         private static final int col = 3;
 
         private static final char EMPTY = ' ';
-        private static final char PLAYER_O = 'o';
-        private static final char PLAYER_X = 'x';
 
         public Board() {
           board = new char[row][col];
@@ -19,20 +17,11 @@ public class Board {
           }
         }
 
-        public char changePlayer(char player){
-          if(player == PLAYER_O)
-            return PLAYER_X;
-          else{
-            return PLAYER_O;
-          }
-        }
-
-
         public static char[][] getBoard() {
           return board;
         }
-        
-  
+
+
        public static Boolean checkLegalMove(int row, int col) {
           if((row > 2 || row < 0) || (col > 2 || col < 0))
             return false;
@@ -48,17 +37,17 @@ public class Board {
           board[row][col] = player;
         }
 
-       
+
        public Boolean checkWin(){
           if(checkWinRow() || checkWinCol() || checkWinDiag()) {
             return true;
           }
           else {
             return false;
-          } 
+          }
        }
 
-       
+
         public static Boolean isFull(){
             for (int i = 0; i < row; i++) {
                 for (int j = 0; j < col; j++) {
@@ -77,7 +66,7 @@ public class Board {
           }
           else if (board[0][1] == board[1][1] && board[1][1] == board[2][1] && (board[0][1] == 'x' || board[0][1] == 'o')) {
             return true;
-          } 
+          }
           else if (board[0][2] == board[1][2] && board[1][2] == board[2][2] && (board[0][2] == 'x' || board[0][2] == 'o')) {
             return true;
           }
@@ -87,7 +76,7 @@ public class Board {
         private Boolean checkWinCol(){
           if (board[0][0] == board[0][1] && board[0][1] == board[0][2] && (board[0][0] == 'x' || board[0][0] == 'o')) {
             return true;
-          } 
+          }
           else if (board[1][0] == board[1][1] && board[1][1] == board[1][2] && (board[1][0] == 'x' || board[1][0] == 'o')) {
               return true;
           } else if (board[2][0] == board[2][1] && board[2][1] == board[2][2] && (board[2][0] == 'x' || board[2][0] == 'o')) {
