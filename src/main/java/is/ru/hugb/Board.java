@@ -19,7 +19,6 @@ public class Board {
           }
         }
 
-        testChangePlayer
         public char changePlayer(char player){
           if(player == PLAYER_O)
             return PLAYER_X;
