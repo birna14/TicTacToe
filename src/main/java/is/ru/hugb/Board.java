@@ -2,34 +2,31 @@ package is.ru.hugb;
 
 public class Board {
         private static char[][] board;
-        private static int row;
-        private static int col;
+        private static final int row = 3;
+        private static final int col = 3;
 
-        public Board(int size) {
-            row = 3;
-            col = 3;
+        private static final char EMPTY = ' ';
+        private static final char PLAYER_O = 'o';
+        private static final char PLAYER_X = 'x';
 
-            board = setupBoard();
-        }
-
-
-        public char[][] setupBoard() {
-            for (int i = 0; i < row; i++) {
-                for (int j = 0; j < col; j++) {
-                    board[i][j] = ' ';
-                }
-            }
-            return board;
+        public Board() {
+          board = new char[row][col];
+          
+          for (int i = 0; i < row; i++) {
+              for (int j = 0; j < col; j++) {
+                  board[i][j] = EMPTY;
+              }
+          }
         }
 
         //TODO
        public static Boolean checkLegalMove() {
-                return true;
+          return true;
         }
 
         //TODO
        public Boolean checkWin(){
-                return true;
+          return true;
        }
 
         //TODO
@@ -37,7 +34,7 @@ public class Board {
             for (int i = 0; i < row; i++) {
                 for (int j = 0; j < col; j++) {
                     // if some cell is empty the board is not full
-                    if (board[i][j] == ' ') {
+                    if (board[i][j] == EMPTY) {
                         return false;
                     }
                 }
