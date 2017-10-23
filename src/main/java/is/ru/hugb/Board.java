@@ -1,12 +1,14 @@
 package is.ru.hugb;
 
 public class Board {
-        private char[][] board;
-        int position;
+        private static char[][] board;
+        private static int row;
+	private static int col;
 
         public Board(int size) {
-                board = new char[3][3];
-
+		row = 3;
+		col = 3;
+                board = new char[row][col];
         }
 
         //TODO
@@ -21,7 +23,8 @@ public class Board {
 
         //TODO
         public Boolean isFull(){
-                return true;
+               	// tvöföld forlúppa og ef ekkert hólf er empty skilar fallið true, annars false
+		return true;
         }
 }
 
