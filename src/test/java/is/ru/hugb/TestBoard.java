@@ -27,8 +27,27 @@ public class TestBoard {
         }
 
         @Test
-        public void testWin(){
-         
-          //assertEquals(false, b.checkWin(b.board));
+        public void testWinRow(){
+          b.updateCell('x', 0, 0);
+          b.updateCell('x', 1, 0);
+          b.updateCell('x', 2, 0);
+          assertEquals(true, b.checkWin());
         }
+
+        @Test
+        public void testWinCol(){
+          b.updateCell('x', 1, 0);
+          b.updateCell('x', 1, 1);
+          b.updateCell('x', 1, 2);
+          assertEquals(true, b.checkWin());
+        }
+
+        @Test
+        public void testWinDiag(){
+          b.updateCell('o', 0, 0);
+          b.updateCell('o', 1, 1);
+          b.updateCell('o', 2, 2);
+          assertEquals(true, b.checkWin());
+        }
+
 }

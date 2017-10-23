@@ -31,9 +31,13 @@ public class Board {
 
         }
 
+        public void updateCell(char player, int row, int col) {
+          board[row][col] = player;
+        }
+
         //TODO
-       public Boolean checkWin(char[][] board){
-          if(checkWinRow(board) || checkWinCol(board) || checkWinDiag(board)) {
+       public Boolean checkWin(){
+          if(checkWinRow() || checkWinCol() || checkWinDiag()) {
             return true;
           }
           else {
@@ -54,7 +58,7 @@ public class Board {
             return true;
         }
 
-        private Boolean checkWinRow(char[][] board){
+        private Boolean checkWinRow(){
           if(board[0][0] == board[1][0] && board[1][0] == board[2][0] && (board[0][0] == 'x' || board[0][0] == 'o')) {
             return true;
           }
@@ -67,7 +71,7 @@ public class Board {
           else return false;
         }
 
-        private Boolean checkWinCol(char[][] board){
+        private Boolean checkWinCol(){
           if (board[0][0] == board[0][1] && board[0][1] == board[0][2] && (board[0][0] == 'x' || board[0][0] == 'o')) {
             return true;
           } 
@@ -79,7 +83,7 @@ public class Board {
          else return false;
        }
 
-       private Boolean checkWinDiag(char[][] board){
+       private Boolean checkWinDiag(){
         if (board[0][0] == board[1][1] && board[1][1] == board[2][2] && (board[0][0] == 'x' || board[0][0] == 'o')) {
             return true;
           } else if (board[2][0] == board[1][1] && board[1][1] == board[0][2] && (board[2][0] == 'x' || board[2][0] == 'o')) {
