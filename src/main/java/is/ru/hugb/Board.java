@@ -11,7 +11,7 @@ public class Board {
 
         public Board() {
           board = new char[row][col];
-          
+
           for (int i = 0; i < row; i++) {
               for (int j = 0; j < col; j++) {
                   board[i][j] = EMPTY;
@@ -19,6 +19,7 @@ public class Board {
           }
         }
 
+        testChangePlayer
         public char changePlayer(char player){
           if(player == PLAYER_O)
             return PLAYER_X;
@@ -27,6 +28,10 @@ public class Board {
           }
         }
 
+
+        public static char[][] getBoard() {
+          return board;
+        }
         //TODO
        public static Boolean checkLegalMove(int row, int col) {
           if((row > 2 || row < 0) || (col > 2 || col < 0))
@@ -55,5 +60,8 @@ public class Board {
                 }
             }
             return true;
+        }
+
+        public static void main(String[] args) {
         }
 }

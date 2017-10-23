@@ -9,8 +9,8 @@ import org.junit.Test;
 public class TestBoard {
 
         Board b;
-        
-        @Before 
+
+        @Before
         public void setUp() {
           b = new Board();
         }
