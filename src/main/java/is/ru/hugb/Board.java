@@ -31,7 +31,8 @@ public class Board {
         public static char[][] getBoard() {
           return board;
         }
-        //TODO
+        
+  
        public static Boolean checkLegalMove(int row, int col) {
           if((row > 2 || row < 0) || (col > 2 || col < 0))
             return false;
@@ -43,12 +44,21 @@ public class Board {
 
         }
 
-        //TODO
+        public void updateCell(char player, int row, int col) {
+          board[row][col] = player;
+        }
+
+       
        public Boolean checkWin(){
-          return true;
+          if(checkWinRow() || checkWinCol() || checkWinDiag()) {
+            return true;
+          }
+          else {
+            return false;
+          } 
        }
 
-        //TODO
+       
         public static Boolean isFull(){
             for (int i = 0; i < row; i++) {
                 for (int j = 0; j < col; j++) {
@@ -61,6 +71,38 @@ public class Board {
             return true;
         }
 
-        public static void main(String[] args) {
+        private Boolean checkWinRow(){
+          if(board[0][0] == board[1][0] && board[1][0] == board[2][0] && (board[0][0] == 'x' || board[0][0] == 'o')) {
+            return true;
+          }
+          else if (board[0][1] == board[1][1] && board[1][1] == board[2][1] && (board[0][1] == 'x' || board[0][1] == 'o')) {
+            return true;
+          } 
+          else if (board[0][2] == board[1][2] && board[1][2] == board[2][2] && (board[0][2] == 'x' || board[0][2] == 'o')) {
+            return true;
+          }
+          else return false;
         }
+
+        private Boolean checkWinCol(){
+          if (board[0][0] == board[0][1] && board[0][1] == board[0][2] && (board[0][0] == 'x' || board[0][0] == 'o')) {
+            return true;
+          } 
+          else if (board[1][0] == board[1][1] && board[1][1] == board[1][2] && (board[1][0] == 'x' || board[1][0] == 'o')) {
+              return true;
+          } else if (board[2][0] == board[2][1] && board[2][1] == board[2][2] && (board[2][0] == 'x' || board[2][0] == 'o')) {
+              return true;
+         }
+         else return false;
+       }
+
+       private Boolean checkWinDiag(){
+        if (board[0][0] == board[1][1] && board[1][1] == board[2][2] && (board[0][0] == 'x' || board[0][0] == 'o')) {
+            return true;
+          } else if (board[2][0] == board[1][1] && board[1][1] == board[0][2] && (board[2][0] == 'x' || board[2][0] == 'o')) {
+              return true;
+          }
+          else return false;
+     }
+
 }
