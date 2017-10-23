@@ -19,6 +19,14 @@ public class Board {
           }
         }
 
+        public char changePlayer(char player){
+          if(player == PLAYER_O)
+            return PLAYER_X;
+          else{
+            return PLAYER_O;
+          }
+        }
+
         //TODO
        public static Boolean checkLegalMove(int row, int col) {
           if((row > 2 || row < 0) || (col > 2 || col < 0))
