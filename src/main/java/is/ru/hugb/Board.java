@@ -20,8 +20,15 @@ public class Board {
         }
 
         //TODO
-       public static Boolean checkLegalMove() {
+       public static Boolean checkLegalMove(int row, int col) {
+          if((row > 2 || row < 0) || (col > 2 || col < 0))
+            return false;
+          else if(board[row][col] != EMPTY) {
+            return false;
+          }
+
           return true;
+
         }
 
         //TODO

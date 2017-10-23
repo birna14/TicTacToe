@@ -17,7 +17,8 @@ public class TestBoard {
 
         @Test
         public void testCheckLegalMove(){
-        	assertEquals(true, b.checkLegalMove());
+        	assertEquals(false, b.checkLegalMove(3,3));
+            assertEquals(true, b.checkLegalMove(0,0));
         }
 
         @Test
