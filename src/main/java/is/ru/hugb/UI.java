@@ -13,6 +13,9 @@ public class UI {
     }
 
     public static void main(String[] args) {
+      Board b = new Board();
+      Game g = new Game();
+
       printBoard();
     }
     // annað fall sem sér um að prenta X og O?
