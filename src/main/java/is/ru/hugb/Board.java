@@ -11,7 +11,7 @@ public class Board {
 
         public Board() {
           board = new char[row][col];
-          
+
           for (int i = 0; i < row; i++) {
               for (int j = 0; j < col; j++) {
                   board[i][j] = EMPTY;
@@ -19,7 +19,20 @@ public class Board {
           }
         }
 
-        //TODO
+        public char changePlayer(char player){
+          if(player == PLAYER_O)
+            return PLAYER_X;
+          else{
+            return PLAYER_O;
+          }
+        }
+
+
+        public static char[][] getBoard() {
+          return board;
+        }
+        
+  
        public static Boolean checkLegalMove(int row, int col) {
           if((row > 2 || row < 0) || (col > 2 || col < 0))
             return false;
@@ -35,7 +48,7 @@ public class Board {
           board[row][col] = player;
         }
 
-        //TODO
+       
        public Boolean checkWin(){
           if(checkWinRow() || checkWinCol() || checkWinDiag()) {
             return true;
@@ -45,7 +58,7 @@ public class Board {
           } 
        }
 
-        //TODO
+       
         public static Boolean isFull(){
             for (int i = 0; i < row; i++) {
                 for (int j = 0; j < col; j++) {
@@ -91,4 +104,5 @@ public class Board {
           }
           else return false;
      }
+
 }

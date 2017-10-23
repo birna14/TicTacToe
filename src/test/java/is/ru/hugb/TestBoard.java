@@ -9,8 +9,8 @@ import org.junit.Test;
 public class TestBoard {
 
         Board b;
-        
-        @Before 
+
+        @Before
         public void setUp() {
           b = new Board();
         }
@@ -50,4 +50,7 @@ public class TestBoard {
           assertEquals(true, b.checkWin());
         }
 
+        public void testChangePlayer(){
+            assertEquals('o', b.changePlayer('x'));
+        }
 }
