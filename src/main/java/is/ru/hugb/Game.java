@@ -2,13 +2,13 @@ package is.ru.hugb;
 
 public class Game {
 
-	public Board() {
+	public Game() {
 		//TODO
 	}
 
 	//TODO:
-	public playGame();
+	//public playGame();
 
 	//TODO:
-	public int takeTurn();
+	//public int takeTurn();
 }

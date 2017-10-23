@@ -2,17 +2,26 @@ package is.ru.hugb;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import org.junit.Before;
+
 import org.junit.Test;
 
 public class TestBoard {
 
+        Board b;
+        
+        @Before 
+        public void setUp() {
+          b = new Board();
+        }
+
         @Test
         public void testCheckLegalMove(){
-        	assertEquals(true, Board.checkLegalMove());
+        	assertEquals(true, b.checkLegalMove());
         }
+
         @Test
-        // ath. þetta er vitlaust eins og er, á að skila false
         public void testIsFull(){
-          assertEquals(true, Board.isFull());
+          assertEquals(false, b.isFull());
         }
 }
