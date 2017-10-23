@@ -25,4 +25,9 @@ public class TestBoard {
         public void testIsFull(){
           assertEquals(false, b.isFull());
         }
+
+        @Test
+        public void testChangePlayer(){
+            assertEquals('o', b.changePlayer('x'));
+        }
 }

@@ -19,6 +19,15 @@ public class Board {
           }
         }
 
+        public char changePlayer(char player){
+          if(player == PLAYER_O)
+            return PLAYER_X;
+          else{
+            return PLAYER_O;
+          }
+        }
+
+
         public static char[][] getBoard() {
           return board;
         }
