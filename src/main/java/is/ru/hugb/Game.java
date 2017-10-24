@@ -4,12 +4,12 @@ public class Game {
 	public enum State {
 	  PLAYING, DRAW, WIN
 	}
-	private Board board;            // the game board
+  private Board board;            // the game board
   private State currentState; // the current state of the game (of enum tate)
   private char currentPlayer; 		// the player
 
-	private static final char PLAYER_O = 'o';
-	private static final char PLAYER_X = 'x';
+	private final char PLAYER_O = 'o';
+	private final char PLAYER_X = 'x';
 
 	public Game() {
 		currentPlayer = PLAYER_X;
