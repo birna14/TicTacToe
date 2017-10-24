@@ -21,6 +21,7 @@ public class Board {
           return board;
         }
 
+        // checks for input that is out of bounds or empty
 
        public Boolean checkLegalMove(int row, int col) {
           if((row > 2 || row < 0) || (col > 2 || col < 0))
@@ -33,11 +34,12 @@ public class Board {
 
         }
 
+        // X or O written to the correct cell
         public void updateCell(char player, int row, int col) {
           board[row][col] = player;
         }
 
-
+        // calls three private functions that check each case
        public Boolean checkWin(){
           if(checkWinRow() || checkWinCol() || checkWinDiag()) {
             return true;
@@ -47,7 +49,7 @@ public class Board {
           }
        }
 
-
+       // Game uses this to determine if there is a draw
         public Boolean isFull(){
             for (int i = 0; i < row; i++) {
                 for (int j = 0; j < col; j++) {
@@ -93,9 +95,4 @@ public class Board {
           }
           else return false;
      }
-
-      public static void main(String[] args) {
-        
-      }
-
 }
