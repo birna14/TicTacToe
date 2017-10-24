@@ -50,7 +50,4 @@ public class TestBoard {
           assertEquals(true, b.checkWin());
         }
 
-        /*public void testChangePlayer(){
-            assertEquals('o', b.changePlayer('x'));
-        }*/
 }

@@ -9,8 +9,8 @@ public class Game {
   private State currentState; 		// the current state of the game (of enum State)
   private char currentPlayer; 		// the player
 
-	private static final char PLAYER_O = 'o';
-	private static final char PLAYER_X = 'x';
+	private final char PLAYER_O = 'o';
+	private final char PLAYER_X = 'x';
 
 	public Game() {
 		currentPlayer = PLAYER_X;			// x starts
