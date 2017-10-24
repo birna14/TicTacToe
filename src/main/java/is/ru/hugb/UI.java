@@ -6,12 +6,14 @@ public class UI {
   // prints the board of the given game
     public static void printBoard(Game game) {
         for (int i = 0; i < 3; i++) {
+          for (int j = 0; j < 3; j++) {
+              System.out.print(game.getBoard()[i][j] + " | ");
+          }
           System.out.println();
-            for (int j = 0; j < 3; j++) {
-                System.out.println(game.getBoard()[i][j]);
-            }
+
         }
     }
+
 
     // here the game is played
     public static void main(String[] args) {
