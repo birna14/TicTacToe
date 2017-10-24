@@ -15,8 +15,16 @@ public class TestGame {
         g = new Game();
     }
 
+    @Test
 	public void testChangePlayer(){
-    	assertEquals('x', g.changePlayer('x'));
+    	assertEquals('o', g.changePlayer('x'));
     }
 	
+	@Test
+	public void testSetCell(){
+		assertEquals(false, g.setCell(3, 3));
+		assertEquals(false, g.setCell(-0, 4));
+		assertEquals(true, g.setCell(0, 2));
+
+	}
 }
