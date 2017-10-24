@@ -16,3 +16,6 @@ dependencies {
 run {
     standardInput = System.in
 }
+
+task stage(dependsOn: installDist) {
+}
