@@ -8,11 +8,18 @@ public class UI {
     public static void printBoard(Game game) {
         for (int i = 0; i < 3; i++) {
           for (int j = 0; j < 3; j++) {
-              System.out.print(game.getBoard()[i][j] + " | ");
+            System.out.print(game.getBoard()[i][j]);
+            if(j != 3 - 1)
+              System.out.print(" | ");
           }
-          System.out.println();
+        System.out.println();
+        if(i != 3 - 1){
+            System.out.println("-----------");
+        }
 
         }
+        System.out.println();
+
     }
 
     // here the game is played
@@ -29,7 +36,11 @@ public class UI {
         System.out.println("It's your turn, " + currentGame.getPlayer() + ", please enter two numbers, 0, 1 or 2");
         row = scan.nextInt();
         col = scan.nextInt();
-        currentGame.setCell(row, col);
+        while(!currentGame.setCell(row, col)){
+          System.out.println("Not a valit move, try again");
+          row = scan.nextInt();
+          col = scan.nextInt();
+        }
       }
       while (currentGame.getState() == Game.State.PLAYING);
 
