@@ -2,7 +2,7 @@ package is.ru.hugb;
 
 public class Game {
 	public enum State {
-	  PLAYING, DRAW, X_WON, O_WON
+	  PLAYING, DRAW, WIN
 	}
 	private Board board;            // the game board
   private State currentState; // the current state of the game (of enum tate)
@@ -12,17 +12,41 @@ public class Game {
 	private static final char PLAYER_X = 'x';
 
 	public Game() {
-		currentPlayer = 'x';
-		initializeGame();
+		currentPlayer = PLAYER_X;
+		currentState = State.PLAYING;
+		board = new Board();
 	}
 
-	//TODO:
-	//public playGame();
-	public void initializeGame() {
-		 currentState = State.PLAYING; // ready to play
+	public State getState() {
+		return currentState;
 	}
-	//TODO:
-	//public int takeTurn();
+
+	public char getPlayer() {
+		return currentPlayer;
+	}
+
+	public Boolean setCell(int row, int col) {
+		if(board.checkLegalMove(row, col)) {
+			board.updateCell(currentPlayer, row, col);
+			if(board.checkWin()) {
+				currentState = State.WIN;
+				return true;
+			}
+			else if (board.isFull()) {
+				currentState = State.DRAW;
+				return true;
+			}
+
+			if (currentPlayer == PLAYER_X) {
+				currentPlayer = PLAYER_O;
+			}
+			else {
+				currentPlayer = PLAYER_X;
+			}
+			return true;
+		}
+		return false;
+	}
 
 	public char changePlayer(char player){
 		if(player == PLAYER_O)
@@ -30,5 +54,9 @@ public class Game {
 		else{
 			return PLAYER_O;
 		}
+	}
+	//fall sem sendir borð leiksins áfram
+	public char[][] getBoard() {
+		return board.getBoard();
 	}
 }
