@@ -50,5 +50,28 @@ public class TestBoard {
           b.updateCell('o', 2, 2);
           assertEquals(true, b.checkWin());
         }
+		
+		@Test 
+		public void testNotWinRow(){
+		  assertEquals(false, b.checkWin());
+          b.updateCell('x', 0, 0);
+          b.updateCell('x', 1, 0);
+		  assertEquals(false, b.checkWin());
+		}
 
+		@Test 
+		public void testNotWinCol(){
+		  assertEquals(false, b.checkWin());
+          b.updateCell('x', 1, 0);
+          b.updateCell('x', 1, 1);
+		  assertEquals(false, b.checkWin());
+		}
+		
+		@Test 
+		public void testNotWinDiag(){
+		  assertEquals(false, b.checkWin());
+          b.updateCell('x', 0, 0);
+          b.updateCell('x', 1, 1);
+		  assertEquals(false, b.checkWin());
+		}
 }
