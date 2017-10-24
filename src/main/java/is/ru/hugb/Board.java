@@ -94,4 +94,8 @@ public class Board {
           else return false;
      }
 
+      public static void main(String[] args) {
+        
+      }
+
 }

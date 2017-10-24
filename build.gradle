@@ -1,7 +1,7 @@
 apply plugin: 'java'
 apply plugin: 'application'
 
-mainClassName = 'is.ru.hugb.Board'
+mainClassName = 'is.ru.hugb.UI'
 
 repositories {
         mavenCentral()
@@ -11,4 +11,8 @@ dependencies {
         testImplementation 'junit:junit:4.12'
 
         compile 'com.sparkjava:spark-core:2.6.0'
+}
+
+run {
+    standardInput = System.in
 }
