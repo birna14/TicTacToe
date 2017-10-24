@@ -10,13 +10,13 @@ public class TestGame {
 
 	Game g;
 
-     @Before
-     public void setUp() {
+    @Before
+    public void set() {
         g = new Game();
-     }
+    }
 
-	 public void testChangePlayer(){
-     	assertEquals('x', g.changePlayer('x'));
-     }
+	public void testChangePlayer(){
+    	assertEquals('x', g.changePlayer('x'));
+    }
 	
 }

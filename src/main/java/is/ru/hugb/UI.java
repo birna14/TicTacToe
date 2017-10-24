@@ -3,7 +3,7 @@ package is.ru.hugb;
 import java.util.Scanner;
 
 public class UI {
-    public void printBoard(Game game) {
+    public static void printBoard(Game game) {
         for (int i = 0; i < 3; i++) {
           System.out.println();
             for (int j = 0; j < 3; j++) {
@@ -12,7 +12,7 @@ public class UI {
         }
     }
 
-    public void main(String[] args) {
+    public static void main(String[] args) {
       Game currentGame = new Game();
       Scanner scan = new Scanner(System.in);
 
