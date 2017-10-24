@@ -37,7 +37,7 @@ public class UI {
         row = scan.nextInt();
         col = scan.nextInt();
         while(!currentGame.setCell(row, col)){
-          System.out.println("Not a valit move, try again");
+          System.out.println("Not a valid move, try again");
           row = scan.nextInt();
           col = scan.nextInt();
         }
