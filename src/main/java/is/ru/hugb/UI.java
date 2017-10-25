@@ -22,6 +22,14 @@ public class UI {
 
     }
 
+   private static int validateInput(Scanner scan){
+    while (!scan.hasNextInt()){
+      System.out.println("please enter two numbers, 0, 1 or 2");
+      scan.next();
+    } 
+    return scan.nextInt();
+  }
+
     // here the game is played
 
     public static void main(String[] args) {
@@ -34,8 +42,8 @@ public class UI {
 
         // user inputs two numbers (0, 1), (2,0)...
         System.out.println("It's your turn, " + currentGame.getPlayer() + ", please enter two numbers, 0, 1 or 2");
-        row = scan.nextInt();
-        col = scan.nextInt();
+        row = validateInput(scan);
+        col = validateInput(scan);
         while(!currentGame.setCell(row, col)){
           System.out.println("Not a valid move, try again");
           row = scan.nextInt();
