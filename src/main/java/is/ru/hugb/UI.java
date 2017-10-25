@@ -7,21 +7,21 @@ import static spark.Spark.*;
 public class UI {
 
   // prints the board of the given game
-    public static void printBoard(Game game) {
+    public static String printBoard(Game game) {
+      String out = "";
         for (int i = 0; i < 3; i++) {
           for (int j = 0; j < 3; j++) {
-            System.out.print(game.getBoard()[i][j]);
+            out += game.getBoard()[i][j];
             if(j != 3 - 1)
-              System.out.print(" | ");
+              out += ("   |   ");
           }
-        System.out.println();
-        if(i != 3 - 1){
-            System.out.println("-----------");
+        out += "<br>";
+        if(i != 3 - 1) {
+            out += "-----------";
         }
-
-        }
-        System.out.println();
-
+      }
+      out += "<br>";
+      return out;
     }
 
     // here the game is played
@@ -29,19 +29,22 @@ public class UI {
     public static void main(String[] args) {
     // In order for this to work on Heroku, we need to allow Heroku to set the port number
 
-    port(getHerokuPort());
-    get("/", (req, res) -> {
-          return "Virkar!";
-          });
-    }
+      port(getHerokuPort());
+      get("/", (req, res) -> {
+            Game game = new Game();
+            UI ui = new UI();
+            return ui.printBoard(game);
 
-    static int getHerokuPort() {
-      ProcessBuilder psb = new ProcessBuilder();
-      if (psb.environment().get("PORT") != null) {
-        return Integer.parseInt(psb.environment().get("PORT"));
+          });
       }
-      return 4567;
-    }
+
+      static int getHerokuPort() {
+        ProcessBuilder psb = new ProcessBuilder();
+        if (psb.environment().get("PORT") != null) {
+          return Integer.parseInt(psb.environment().get("PORT"));
+        }
+        return 4567;
+      }
 /*
       final String portNumber = System.getenv("PORT");
           if (portNumber != null) {
