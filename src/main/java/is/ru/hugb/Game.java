@@ -26,6 +26,7 @@ public class Game {
 		return currentPlayer;
 	}
 
+
 	// sets the given user input to the correct cell
 	public Boolean setCell(int row, int col) {
 		// continues if the move is legal

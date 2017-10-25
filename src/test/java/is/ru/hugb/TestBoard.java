@@ -23,8 +23,22 @@ public class TestBoard {
         }
 
         @Test
-        public void testIsFull(){
+        public void testIsNotFull(){
           assertEquals(false, b.isFull());
+        }
+
+        @Test
+        public void testIsFull(){
+            b.updateCell('x', 1, 0);
+            b.updateCell('o', 0, 0);
+            b.updateCell('x', 0, 1);
+            b.updateCell('o', 2, 0);
+            b.updateCell('x', 2, 1);
+            b.updateCell('o', 1, 1);
+            b.updateCell('x', 0, 2);
+            b.updateCell('o', 1, 2);
+            b.updateCell('x', 2, 2);
+          assertEquals(true, b.isFull());
         }
 
         @Test
