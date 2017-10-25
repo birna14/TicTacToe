@@ -2,6 +2,8 @@ package is.ru.hugb;
 
 import java.util.Scanner;
 
+import static spark.Spark.*;
+
 public class UI {
 
   // prints the board of the given game
@@ -25,6 +27,44 @@ public class UI {
     // here the game is played
 
     public static void main(String[] args) {
+    // In order for this to work on Heroku, we need to allow Heroku to set the port number
+
+    port(getHerokuPort());
+    get("/", (req, res) -> {
+          return "Virkar!";
+          });
+    }
+
+    static int getHerokuPort() {
+      ProcessBuilder psb = new ProcessBuilder();
+      if (psb.environment().get("PORT") != null) {
+        return Integer.parseInt(psb.environment().get("PORT"));
+      }
+      return 4567;
+    }
+/*
+      final String portNumber = System.getenv("PORT");
+          if (portNumber != null) {
+              Spark.port(Integer.parseInt(portNumber));
+          }
+              get("/", (req, res) -> { return "Helloooo!"; });
+      }
+
+
+/*
+
+port(getHerokuPort());
+      get("/", (req, res) -> {
+          return "Virkar!";
+      });
+      get(
+          "/add/:input",
+          (req, res) -> add(req.params(":input"))
+      );
+  }
+
+
+  }
       Game currentGame = new Game();
       Scanner scan = new Scanner(System.in);
       int row, col;
@@ -56,5 +96,5 @@ public class UI {
         System.out.println("It's a draw!");
       }
       // play again?
-    }
+    }*/
 }
