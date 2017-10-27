@@ -9,8 +9,8 @@ public class UI {
 
   // prints the board of the given game
     public static String printBoard(Game game) {
-      game.setCell(1,2);
-      game.setCell(0,0);
+      //game.setCell(1,2);
+      //game.setCell(0,0);
       String out = "";
         for (int i = 0; i < 3; i++) {
           out += "<br>";
@@ -47,14 +47,16 @@ public class UI {
 
 
       post("/add", (req, res) -> {
+            UI ui = new UI();
+            
             String input1 = req.queryParams("input1");
             String input2 = req.queryParams("input2");
             int iInput1 = Integer.parseInt(input1);
             int iInput2 = Integer.parseInt(input2);
 
-            Boolean result = game.setCell(iInput1, iInput2);
+            game.setCell(iInput1, iInput2);
             //Boolean result = game.setCell(iInput1, iInput2);
-            return result;
+            return ui.printBoard(game);
 
           });
 
@@ -63,6 +65,15 @@ public class UI {
             return ui.printBoard(game);
 
           });
+      
+      get("/add/:numbers", (req, res) -> {
+        String input1 = req.queryParams("input1");
+        String input2 = req.queryParams("input2");
+        int iInput1 = Integer.parseInt(input1);
+        int iInput2 = Integer.parseInt(input2);
+        
+        return game.setCell(iInput1, iInput2);
+        });
       }
 
       static int getHerokuPort() {
