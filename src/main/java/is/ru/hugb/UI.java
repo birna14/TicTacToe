@@ -1,6 +1,7 @@
 package is.ru.hugb;
 
 import java.util.Scanner;
+import java.net.URLDecoder;
 
 import static spark.Spark.*;
 
@@ -8,15 +9,18 @@ public class UI {
 
   // prints the board of the given game
     public static String printBoard(Game game) {
+      game.setCell(1,2);
+      game.setCell(0,0);
       String out = "";
         for (int i = 0; i < 3; i++) {
+          out += "<br>";
           for (int j = 0; j < 3; j++) {
             out += game.getBoard()[i][j];
-            if(j != 3 - 1)
+            if(j != 2)
               out += ("   |   ");
           }
         out += "<br>";
-        if(i != 3 - 1) {
+        if(i != 2) {
             out += "-----------";
         }
       }
@@ -36,10 +40,25 @@ public class UI {
 
     public static void main(String[] args) {
     // In order for this to work on Heroku, we need to allow Heroku to set the port number
-
+      staticFileLocation("/public");
       port(getHerokuPort());
-      get("/", (req, res) -> {
-            Game game = new Game();
+
+      Game game = new Game();
+
+
+      post("/add", (req, res) -> {
+            String input1 = req.queryParams("input1");
+            String input2 = req.queryParams("input2");
+            int iInput1 = Integer.parseInt(input1);
+            int iInput2 = Integer.parseInt(input2);
+
+            Boolean result = game.setCell(iInput1, iInput2);
+            //Boolean result = game.setCell(iInput1, iInput2);
+            return result;
+
+          });
+
+      post("/showtable", (req, res) -> {
             UI ui = new UI();
             return ui.printBoard(game);
 
