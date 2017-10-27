@@ -15,12 +15,12 @@ public class UI {
         for (int i = 0; i < 3; i++) {
           out += "<br>";
           for (int j = 0; j < 3; j++) {
-				if(game.getBoard()[i][j] == ' '){
-					out += "&ensp;";
-				}
-				else{
-					out += game.getBoard()[i][j];
-				}
+	     if(game.getBoard()[i][j] == ' '){
+		out += "&ensp;";
+	      }
+	      else{
+		out += game.getBoard()[i][j];
+	      }
             if(j != 2)
               out += ("   |   ");
           }
@@ -53,23 +53,34 @@ public class UI {
 
       post("/add", (req, res) -> {
            
-            
-            String input1 = req.queryParams("input1");
-            String input2 = req.queryParams("input2");
-            int iInput1 = Integer.parseInt(input1);
-            int iInput2 = Integer.parseInt(input2);
+            if(game.getState() == Game.State.PLAYING){
+		String input1 = req.queryParams("input1");
+		String input2 = req.queryParams("input2");
+		int iInput1 = Integer.parseInt(input1);
+		int iInput2 = Integer.parseInt(input2);
 
-            game.setCell(iInput1, iInput2);
-            //Boolean result = game.setCell(iInput1, iInput2);
-            return ui.printBoard(game);
-
+			game.setCell(iInput1, iInput2);
+			//Boolean result = game.setCell(iInput1, iInput2);
+			return ui.printBoard(game) + "<br> <h1>" + game.getPlayer() + "'s turn";
+		}
+		else if(game.getState() == Game.State.WIN) {
+			return "<h1>" + game.getPlayer() + "has won!!";
+		}
+		else {
+			return "<h1>No one has won";
+		}
           });
 
       post("/", (req, res) -> {
           
+	if(game.getState() == Game.State.PLAYING){
             return ui.printBoard(game);
+	}
+	else{
+		return "Something completly diffrent!";
+	}
 
-          });
+       });
       
       get("/add/:numbers", (req, res) -> {
         String input1 = req.queryParams("input1");
