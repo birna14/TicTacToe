@@ -11,11 +11,12 @@ public class UI {
     public static String printBoard(Game game) {
       //game.setCell(1,2);
       //game.setCell(0,0);
-      String out = "";
+      String out = "<h1>";
         for (int i = 0; i < 3; i++) {
           out += "<br>";
           for (int j = 0; j < 3; j++) {
-            out += game.getBoard()[i][j];
+
+               out += game.getBoard()[i][j];
             if(j != 2)
               out += ("   |   ");
           }
@@ -23,9 +24,9 @@ public class UI {
         if(i != 2) {
             out += "-----------";
         }
+     
       }
-      out += "<br>";
-      return out;
+      return out + "</h1>";
     }
 
    private static int validateInput(Scanner scan){
@@ -44,10 +45,10 @@ public class UI {
       port(getHerokuPort());
 
       Game game = new Game();
-
+       UI ui = new UI();
 
       post("/add", (req, res) -> {
-            UI ui = new UI();
+           
             
             String input1 = req.queryParams("input1");
             String input2 = req.queryParams("input2");
@@ -60,8 +61,8 @@ public class UI {
 
           });
 
-      post("/showtable", (req, res) -> {
-            UI ui = new UI();
+      post("/", (req, res) -> {
+          
             return ui.printBoard(game);
 
           });
