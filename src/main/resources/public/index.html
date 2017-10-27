@@ -33,6 +33,7 @@
 		  Input 2:
 		  <input type="text" name="input2" id="input2"><br>
 		  <input type="submit" value="Submit">
+		  <input type="reset" value="Reset">
 		  <hr>
 		</form>
 		<hr>
@@ -55,7 +56,10 @@
 		          }).fail(function() {
 		            $('#results').html('Error, Illegal input...').attr('class', 'alert alert-danger');
 		          });
-		          event.preventDefault();
+		          	event.preventDefault();
+					
+					<!-- O my lord, O my lord how to I do a reset on this shit without breaking things!?-->
+					<!-- form.reset(function( event ) {}; -->
         });
       });
 		

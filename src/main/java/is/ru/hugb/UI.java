@@ -15,14 +15,18 @@ public class UI {
         for (int i = 0; i < 3; i++) {
           out += "<br>";
           for (int j = 0; j < 3; j++) {
-
-               out += game.getBoard()[i][j];
+				if(game.getBoard()[i][j] == ' '){
+					out += "&ensp;";
+				}
+				else{
+					out += game.getBoard()[i][j];
+				}
             if(j != 2)
               out += ("   |   ");
           }
         out += "<br>";
         if(i != 2) {
-            out += "-----------";
+            out += "---------";
         }
      
       }
