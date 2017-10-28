@@ -23,21 +23,19 @@
 		<!--<form method="post" action="/showtable">
 
 		</form>-->
-
 		  <div id="results" class="alert alert-info">
         Waiting for input to work...
       </div>
 
-		<form method="post" action="/add">
+		<form>
 		  Input 1:<br>
 		  <input type="text" name="input1" id="input1">
 		  Input 2:
 		  <input type="text" name="input2" id="input2"><br>
 		  <input type="submit" value="Submit">
-		  <hr>
+		<input type="reset" value="Reset Game" id="reset">
+		   <hr>
 		</form>
-		
-		  <input type="reset" value="Reset Game">
 		<hr>
 	</div>
 	</div>
@@ -47,27 +45,35 @@
 
 			$(document).ready(function() {
 		        var form = $('form');
+				
 		        form.submit(function( event ) {
+					event.preventDefault();
 		          var input1 = $("#input1").val();
 		          var input2 = $("#input2").val();
 		          $.ajax({
-		            type: form.attr('method'),
-		            url: form.attr('action'),
+		            type: "post",
+		            url: "/add",
 		            data:{ 'input1' : input1, 'input2' : input2 }
 		          }).done(function(result) {
 		            $('#results').html(result).attr('class', 'alert alert-success');
 		          }).fail(function() {
 		            $('#results').html('Error, Illegal input...').attr('class', 'alert alert-danger');
 		          });
-		          	event.preventDefault();
-					
-				form.reset(function( event ) {
-					document.getElementById(fullform).reset();
-				});
+				  });
+				$('#reset').click(function( event ) {
 				event.preventDefault();
+					$.ajax({
+		            type: "delete",
+		            url: "/reset",
+		          }).done(function(result) {
+		            $('#results').html(result).attr('class', 'alert alert-success');
+		          }).fail(function() {
+		            $('#results').html('Error, Illegal input...').attr('class', 'alert alert-danger');
+				});
+					
+				
         });
       });
-		
 	
 		</script>
 	</body>
