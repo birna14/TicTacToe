@@ -32,6 +32,14 @@ public class UI {
       }
       return out + "</h1>";
     }
+	public static void clearBoard(Game game) {
+		for (int i = 0; i < 3; i++) {
+              for (int j = 0; j < 3; j++) {
+                  game.getBoard()[i][j] = ' ';
+              }
+          }
+		  game.resetState();
+	}
 
    private static int validateInput(Scanner scan){
     while (!scan.hasNextInt()){
@@ -48,10 +56,11 @@ public class UI {
       staticFileLocation("/public");
       port(getHerokuPort());
 
-      Game game = new Game();
+       Game game = new Game();
        UI ui = new UI();
 
       post("/add", (req, res) -> {
+		  
            String input1 = req.queryParams("input1");
 			String input2 = req.queryParams("input2");
 			int iInput1 = Integer.parseInt(input1);
@@ -63,12 +72,19 @@ public class UI {
 				return ui.printBoard(game) + "<br> <h1>" + game.getPlayer() + "'s turn";
 			}
 			else if(game.getState() == Game.State.WIN) {
-				return "<h1>" + game.getPlayer() + " has won!! :)";
+				
+				return ui.printBoard(game) + "<br> <h1>" + game.getPlayer() + " has won!! :)";
 			}
 			else {
-				return "<h1>No one has won! :(";
+				return ui.printBoard(game) + "<br> <h1>No one has won!";
 			}
           });
+		  
+		delete("/reset", (req, res) -> {
+			//game = new Game();
+			ui.clearBoard(game);
+			return "<h1> New game </h1>" + ui.printBoard(game) + "<br> <h1>" + game.getPlayer() + "'s turn";
+		});
 
       post("/", (req, res) -> {
           

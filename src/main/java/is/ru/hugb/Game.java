@@ -17,15 +17,19 @@ public class Game {
 		currentState = State.PLAYING;	// playing state is set
 		board = new Board();					// board of the game initialized
 	}
-
+	
 	public State getState() {
 		return currentState;
 	}
 
+	public void resetState() {
+		currentState = State.PLAYING;
+		currentPlayer = PLAYER_X;
+	}
+	
 	public char getPlayer() {
 		return currentPlayer;
 	}
-
 
 	// sets the given user input to the correct cell
 	public Boolean setCell(int row, int col) {
