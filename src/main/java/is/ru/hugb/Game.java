@@ -17,7 +17,7 @@ public class Game {
 		currentState = State.PLAYING;	// playing state is set
 		board = new Board();					// board of the game initialized
 	}
-	
+
 	public State getState() {
 		return currentState;
 	}
@@ -26,7 +26,7 @@ public class Game {
 		currentState = State.PLAYING;
 		currentPlayer = PLAYER_X;
 	}
-	
+
 	public char getPlayer() {
 		return currentPlayer;
 	}
@@ -34,7 +34,7 @@ public class Game {
 	// sets the given user input to the correct cell
 	public Boolean setCell(int row, int col) {
 		// continues if the move is legal
-		if(board.checkLegalMove(row, col)) {
+		if(board.checkLegalMove(row, col) && !board.checkWin()) {
 			board.updateCell(currentPlayer, row, col);
 			// need to check if we have a win or a draw
 			if(board.checkWin()) {
