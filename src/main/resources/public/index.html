@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Tic Tac Toe by Kisa fór í Costco</title> 
+		<title>Tic Tac Toe by Kisa fór í Costco</title>
 		<!--<meta name="keywords" content="Mylla, leikir, afþreying">-->
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,49 +16,55 @@
 	<body>
 	<div id="fullform">
 		<div class="container" id="container">
-		<h3>Tic Tac Toe by Kisa fór í Costco</h3> 
+		<h3>2 Player Tic Tac Toe by Kisa fór í Costco</h3>
 			<div class="outerBox">
-		</div>	
+		</div>
 
 		<!--<form method="post" action="/showtable">
 
 		</form>-->
 		  <div id="results" class="alert alert-info">
-        Waiting for input to work...
+        <h1>
+					Click "New game" to start"
+				</h1>
       </div>
 
 		<form>
-		  Input 1:<br>
-		  <input type="text" name="input1" id="input1">
-		  Input 2:
-		  <input type="text" name="input2" id="input2"><br>
-		  <input type="submit" value="Submit">
-		<input type="reset" value="Reset Game" id="reset">
+			<input type="submit" name="one" id="0,0" value="" class="button">
+			<input type="submit" name="two" id="0,1" value="" class="button">
+			<input type="submit" name="three" id="0,2" value="" class="button"> <br>
+			<input type="submit" name="four" id="1,0" value="" class="button">
+			<input type="submit" name="five" id="1,1" value="" class="button">
+			<input type="submit" name="six" id="1,2" value="" class="button"> <br>
+			<input type="submit" name="seven" id="2,0" value="" class="button">
+			<input type="submit" name="eight" id="2,1" value="" class="button">
+			<input type="submit" name="nine" id="2,2" value="" class="button"> <br>
+
+			<input type="reset" value="New game" id="reset">
 		   <hr>
 		</form>
 		<hr>
 	</div>
 	</div>
-		
+
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 		<script type="text/javascript">
 
 			$(document).ready(function() {
-		        var form = $('form');
-				
-		        form.submit(function( event ) {
+		      var form = $('form');
+					//$('#reset').trigger('click');
+		      $('.button').click(function( event ) {
 					event.preventDefault();
-		          var input1 = $("#input1").val();
-		          var input2 = $("#input2").val();
 		          $.ajax({
 		            type: "post",
 		            url: "/add",
-		            data:{ 'input1' : input1, 'input2' : input2 }
+								data: { "input" : event.target.id }
 		          }).done(function(result) {
 		            $('#results').html(result).attr('class', 'alert alert-success');
 		          }).fail(function() {
 		            $('#results').html('Error, Illegal input...').attr('class', 'alert alert-danger');
 		          });
+
 				  });
 				$('#reset').click(function( event ) {
 				event.preventDefault();
@@ -70,12 +76,11 @@
 		          }).fail(function() {
 		            $('#results').html('Error, Illegal input...').attr('class', 'alert alert-danger');
 				});
-					
-				
+
+
         });
       });
-	
+
 		</script>
 	</body>
 </html>
-

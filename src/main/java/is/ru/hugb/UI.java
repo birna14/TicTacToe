@@ -28,7 +28,7 @@ public class UI {
         if(i != 2) {
             out += "---------";
         }
-     
+
       }
       return out + "</h1>";
     }
@@ -43,9 +43,8 @@ public class UI {
 
    private static int validateInput(Scanner scan){
     while (!scan.hasNextInt()){
-      System.out.println("please enter two numbers, 0, 1 or 2");
       scan.next();
-    } 
+    }
     return scan.nextInt();
   }
 
@@ -60,51 +59,53 @@ public class UI {
        UI ui = new UI();
 
       post("/add", (req, res) -> {
-		  
-           String input1 = req.queryParams("input1");
-			String input2 = req.queryParams("input2");
-			int iInput1 = Integer.parseInt(input1);
-			int iInput2 = Integer.parseInt(input2);
+
+           String input = req.queryParams("input");
+           String numbers[] = input.split(",");
+
+			     int iInput1 = Integer.parseInt(numbers[0]);
+		       int iInput2 = Integer.parseInt(numbers[1]);
 
 			game.setCell(iInput1, iInput2);
-				
+
             if(game.getState() == Game.State.PLAYING){
 				return ui.printBoard(game) + "<br> <h1>" + game.getPlayer() + "'s turn";
 			}
 			else if(game.getState() == Game.State.WIN) {
-				
+
 				return ui.printBoard(game) + "<br> <h1>" + game.getPlayer() + " has won!! :)";
 			}
 			else {
-				return ui.printBoard(game) + "<br> <h1>No one has won!";
+				return ui.printBoard(game) + "<br> <h1>It's a draw!";
 			}
           });
-		  
+
 		delete("/reset", (req, res) -> {
 			//game = new Game();
 			ui.clearBoard(game);
-			return "<h1> New game </h1>" + ui.printBoard(game) + "<br> <h1>" + game.getPlayer() + "'s turn";
+			return "<h1> Play Tic Tac Toe! </h1>" + ui.printBoard(game) + "<br> <h1>" + game.getPlayer() + "'s turn";
 		});
 
-      post("/", (req, res) -> {
-          
+    get("/", (req, res) -> {
+      ui.clearBoard(game);
+      return "<h1> Play Tic Tac Toe! </h1>" + ui.printBoard(game) + "<br> <h1>" + game.getPlayer() + "'s turn";
+    });
+    /*
+    post("/", (req, res) -> {
+
 			if(game.getState() == Game.State.PLAYING){
             return ui.printBoard(game);
 			}
-			else{
-				return "Something completly diffrent!";
-			}
+    });*/
 
-          });
-      
       get("/add/:numbers", (req, res) -> {
         String input1 = req.queryParams("input1");
         String input2 = req.queryParams("input2");
         int iInput1 = Integer.parseInt(input1);
         int iInput2 = Integer.parseInt(input2);
-        
+
         return game.setCell(iInput1, iInput2);
-        });
+      });
       }
 
       static int getHerokuPort() {
@@ -114,59 +115,4 @@ public class UI {
         }
         return 4567;
       }
-/*
-      final String portNumber = System.getenv("PORT");
-          if (portNumber != null) {
-              Spark.port(Integer.parseInt(portNumber));
-          }
-              get("/", (req, res) -> { return "Helloooo!"; });
-      }
-
-
-/*
-
-port(getHerokuPort());
-      get("/", (req, res) -> {
-          return "Virkar!";
-      });
-      get(
-          "/add/:input",
-          (req, res) -> add(req.params(":input"))
-      );
-  }
-
-
-  }
-      Game currentGame = new Game();
-      Scanner scan = new Scanner(System.in);
-      int row, col;
-      System.out.println("New game, X starts.");
-      do {
-        printBoard(currentGame);
-
-        // user inputs two numbers (0, 1), (2,0)...
-        System.out.println("It's your turn, " + currentGame.getPlayer() + ", please enter two numbers, 0, 1 or 2");
-        row = validateInput(scan);
-        col = validateInput(scan);
-        while(!currentGame.setCell(row, col)){
-          System.out.println("Not a valid move, try again");
-          row = scan.nextInt();
-          col = scan.nextInt();
-        }
-      }
-      while (currentGame.getState() == Game.State.PLAYING);
-
-      // determines a win and prints the winner
-      if (currentGame.getState() == Game.State.WIN) {
-        printBoard(currentGame);
-
-        System.out.println(currentGame.getPlayer() + " is the winner");
-      }
-      // determines a draw
-      else if (currentGame.getState() == Game.State.DRAW) {
-        printBoard(currentGame);
-        System.out.println("It's a draw!");
-      }
-      // play again?
-    }*/
 }
