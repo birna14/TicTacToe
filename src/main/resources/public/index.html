@@ -14,7 +14,8 @@
 	</head>
 
 	<body>
-		<div class="container">
+	<div id="fullform">
+		<div class="container" id="container">
 		<h3>Tic Tac Toe by Kisa fór í Costco</h3> 
 			<div class="outerBox">
 		</div>	
@@ -33,10 +34,12 @@
 		  Input 2:
 		  <input type="text" name="input2" id="input2"><br>
 		  <input type="submit" value="Submit">
-		  <input type="reset" value="Reset">
 		  <hr>
 		</form>
+		
+		  <input type="reset" value="Reset Game">
 		<hr>
+	</div>
 	</div>
 		
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
@@ -58,8 +61,10 @@
 		          });
 		          	event.preventDefault();
 					
-					<!-- O my lord, O my lord how to I do a reset on this shit without breaking things!?-->
-					<!-- form.reset(function( event ) {}; -->
+				form.reset(function( event ) {
+					document.getElementById(fullform).reset();
+				});
+				event.preventDefault();
         });
       });
 		
