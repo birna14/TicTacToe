@@ -38,5 +38,3 @@ Tic Tac Toe is a console game, just like the original the rules are that each pl
 * **Sigríður Ösp Elinborgar Arnarsdóttir**
 * **Svanhvít Lilja Ingólfsdóttir**
 
-
-[Download this Readme as a pdf](https://gitprint.com/KisaCostco/TicTacToe/blob/master/README.MD/)
