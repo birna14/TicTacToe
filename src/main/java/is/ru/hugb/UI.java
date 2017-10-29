@@ -7,31 +7,21 @@ import static spark.Spark.*;
 
 public class UI {
 
-  // prints the board of the given game
-    public static String printBoard(Game game) {
-      //game.setCell(1,2);
-      //game.setCell(0,0);
-      String out = "<h1>";
-        for (int i = 0; i < 3; i++) {
-          out += "<br>";
-          for (int j = 0; j < 3; j++) {
-				if(game.getBoard()[i][j] == ' '){
-					out += "&ensp;";
-				}
-				else{
-					out += game.getBoard()[i][j];
-				}
-            if(j != 2)
-              out += ("   |   ");
-          }
-        out += "<br>";
-        if(i != 2) {
-            out += "---------";
+  public static String printBoard(Game game) {
+    String out = "<h1>";
+    out += "<table>";
+    for (int i = 0; i < 3; i++) {
+      out += "<tr>";
+      //out += "<br>";
+        for (int j = 0; j < 3; j++) {
+          out += "<td>" + game.getBoard()[i][j] + "</td>";
         }
-
+        out += "</tr>";
       }
-      return out + "</h1>";
-    }
+    out += "</table>";
+    return out + "<h1>";
+  }
+  
 	public static void clearBoard(Game game) {
 		for (int i = 0; i < 3; i++) {
               for (int j = 0; j < 3; j++) {
@@ -40,6 +30,7 @@ public class UI {
           }
 		  game.resetState();
 	}
+
 
    private static int validateInput(Scanner scan){
     while (!scan.hasNextInt()){
