@@ -4,9 +4,9 @@
 		<title>Tic Tac Toe by Kisa fór í Costco</title>
 		<!--<meta name="keywords" content="Mylla, leikir, afþreying">-->
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<!--<link rel="stylesheet" type="text/css" href="./stylesheet.css"/>-->
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="./stylesheet.css"/>
 
 		<!-- Þetta væri ef við viljum setja mynd í hornið
 		<link rel="icon" href="http://www.hannarr.com/wp-content/uploads/2016/12/logo_hus_350_350-45x45.png" sizes="32x32">
@@ -16,33 +16,34 @@
 	<body>
 	<div id="fullform">
 		<div class="container" id="container">
-		<h3>2 Player Tic Tac Toe by Kisa fór í Costco</h3>
-			<div class="outerBox">
-		</div>
-
+			<div class="header">
+				<img src="logo.png" alt="cat paw logo" height="120">
+				<h1>  2 Player Tic Tac Toe by Kisa fór í Costco</h1>
+			</div>
 		<!--<form method="post" action="/showtable">
 
 		</form>-->
-		  <div id="results" class="alert alert-info">
-        <h1>
-					Click "New game" to start"
-				</h1>
-      </div>
-
 		<form>
-			<input type="submit" name="one" id="0,0" value="" class="button">
-			<input type="submit" name="two" id="0,1" value="" class="button">
-			<input type="submit" name="three" id="0,2" value="" class="button"> <br>
-			<input type="submit" name="four" id="1,0" value="" class="button">
-			<input type="submit" name="five" id="1,1" value="" class="button">
-			<input type="submit" name="six" id="1,2" value="" class="button"> <br>
-			<input type="submit" name="seven" id="2,0" value="" class="button">
-			<input type="submit" name="eight" id="2,1" value="" class="button">
-			<input type="submit" name="nine" id="2,2" value="" class="button"> <br>
+				<input type="submit" name="one" id="0,0" value="" class="button">
+				<input type="submit" name="two" id="0,1" value="" class="button">
+				<input type="submit" name="three" id="0,2" value="" class="button"> <br>
+				<input type="submit" name="four" id="1,0" value="" class="button">
+				<input type="submit" name="five" id="1,1" value="" class="button">
+				<input type="submit" name="six" id="1,2" value="" class="button"> <br>
+				<input type="submit" name="seven" id="2,0" value="" class="button">
+				<input type="submit" name="eight" id="2,1" value="" class="button">
+				<input type="submit" name="nine" id="2,2" value="" class="button"> <br>
+			</form>
+			<hr>
+			<div id="results" class="alert alert-info">
+        <h2>
+					Click "New game" to start"
+				</h2>
+			</div>
+			<div id="btn">
+				<input type="reset" value="New game" id="reset">
+			</div>
 
-			<input type="reset" value="New game" id="reset">
-		   <hr>
-		</form>
 		<hr>
 	</div>
 	</div>
