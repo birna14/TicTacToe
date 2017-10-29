@@ -69,7 +69,7 @@ public class UI {
       ui.clearBoard(game);
       return "<h1> Play Tic Tac Toe! </h1>" + ui.printBoard(game) + "<br> <h1>" + game.getPlayer() + "'s turn";
     });
-
+  }
     static int getHerokuPort() {
       ProcessBuilder psb = new ProcessBuilder();
       if (psb.environment().get("PORT") != null) {
