@@ -1,10 +1,9 @@
 [![Build Status](https://travis-ci.org/KisaCostco/TicTacToe.svg?branch=master)](https://travis-ci.org/KisaCostco/TicTacToe)
 
 # Tic Tac Toe by Kisa Fór í Costco
-Tic Tac Toe is a console game, just like the original the rules are that each player takes a turn, the first player puts an 'x' in the 3x3 board and then the second player takes a turn and puts an 'o'. This goes on until either one of the player has put his mark in three slots horizontal, vertical or diagonal in a row or when the board is full, which would be a draw.
+Tic Tac Toe is a web console game, just like the original the rules are that each player takes a turn, the first player puts an 'x' in the 3x3 board and then the second player takes a turn and puts an 'o'. This goes on until either one of the player has put his mark in three slots horizontal, vertical or diagonal in a row or when the board is full, which would be a draw. To play the game the player presses a button and his mark appers on the same place in the grid.
 
 ## Features
-[comment]: <> (Web application or console?)
 * User can play the game with a friend or by himself.
 * A win can accure when three of the same marks are in a row, either horizontally, vertically or diagonally.
 * A descriptive error message will appear when a user inputs wrong values for the board.
@@ -26,7 +25,6 @@ Tic Tac Toe is a console game, just like the original the rules are that each pl
 * [Gradle](https://gradle.org)
 * [Travis](https://travis-ci.org/)
 * [Heruko](https://www.heroku.com/) 
-[comment]: <> (Bæta við fleiri? Eclipse og fleira?)
 
 
 ## Members of Kisa Fór í Costco
